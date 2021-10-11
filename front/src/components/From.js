@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux';
+import { fetchRandom } from '../actions'
+const From = (props) => {
+  const [state, setState] = useState();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    props.dispatch(fetchRandom(state));
+  };
+  return <div>
+    <form onSubmit={onSubmit}>
+      <label htmlFor="list">Ingrese una lista separada por comas:</label>
+      <br />
+      <textarea id="list" style={{ width: "300px", height: "120px" }} onChange={(e) => setState(e.target.value)}></textarea>
+      <br />
+      <button type="submit" disabled={props.loading}>
+        Enviar
+      </button>
+    </form>
+  </div>
+}
 
-const From = () => (
-  <span>
-   From
-  </span>
-)
+
+const stateMapToPors = state => {
+  return {
+    loading: state.view.loading
+  }
+}
 
 
-
-export default From
+export default connect(stateMapToPors)(From)
