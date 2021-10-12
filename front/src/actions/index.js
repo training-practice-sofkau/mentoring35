@@ -1,6 +1,6 @@
 
 
-export const fetchRandom = list => dispatch => {
+export const fetchRandom = (state) => (dispatch) => {
 
     dispatch({ type: "view-loading" });
 
@@ -9,10 +9,13 @@ export const fetchRandom = list => dispatch => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({list}) // body data type must match "Content-Type" header
-    })
-        .then(response => response.json())
-        .then(json => dispatch(dispatch({ type: "view-loaded", data: json })))
+        body: JSON.stringify({list: state}) // body data type must match "Content-Type" header
+    }).then(response => response.json())
+      .then(json => {
+          dispatch({ type: "random-result", data: json });
+          dispatch({ type: "view-loaded" });
+        })
 }
+
 
 //TODO: agregar las demas acciones

@@ -1,6 +1,9 @@
 package co.com.sofka.mentoring35;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,9 +20,9 @@ import reactor.core.publisher.Mono;
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = "/r")
 public class RandomController {
-     
+
     private RandomRepository randomRepository;
-    
+
     @Autowired
     public RandomController(RandomRepository randomRepository) {
         this.randomRepository = randomRepository;
@@ -27,18 +30,21 @@ public class RandomController {
 
     @PostMapping("")
     public Mono<Random> post(@RequestBody RequestDTO request) {
-      
-        var entity = new Random();
-        entity.setDate(new Date());
-        entity.setOrginalList(request.getList());
-          //TODO: hacer que las lista sea random
-        entity.setRandomList(request.getList());
-
-        return  randomRepository.save(entity);
+        return Mono.just(new Random()).map(entity -> {
+            entity.setDate(new Date());
+            entity.setOrginalList(request.getList());
+            return entity;
+        }).map(entity -> {
+            var list = Stream.of(request.getList().split(",")).map(p -> p.trim())
+                .collect(Collectors.toList());
+            Collections.shuffle(list);
+            entity.setRandomList(list.stream().collect(Collectors.joining(",")));
+            return entity;
+        }).flatMap(randomRepository::save);
     }
 
     @GetMapping("")
     public Flux<Random> get() {
-        return  randomRepository.findAll();
+        return randomRepository.findAll();
     }
 }
