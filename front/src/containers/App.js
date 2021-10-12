@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import From from '../components/From'
 import Result from '../components/Result'
 
-class App extends Component {
-  
-
+class App extends Component {// component stateful
   render() {
     return (
       <div>

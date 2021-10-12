@@ -35,10 +35,12 @@ public class RandomController {
             entity.setOrginalList(request.getList());
             return entity;
         }).map(entity -> {
-            var list = Stream.of(request.getList().split(",")).map(p -> p.trim())
+            var list = Stream.of(request.getList().split(","))
+                .map(p -> p.trim())
                 .collect(Collectors.toList());
             Collections.shuffle(list);
-            entity.setRandomList(list.stream().collect(Collectors.joining(",")));
+            var randomList = list.stream().collect(Collectors.joining(","));
+            entity.setRandomList(randomList);
             return entity;
         }).flatMap(randomRepository::save);
     }

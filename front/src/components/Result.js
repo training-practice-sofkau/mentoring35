@@ -8,11 +8,11 @@ const Result = (props) => {
 }
 
 
-const stateMapToPors = state => {
+const stateMapToPros = state => {
   return {
     result: state.random.result?.randomList
   }
 }
 
 
-export default connect(stateMapToPors)(Result)
+export default connect(stateMapToPros)(Result)

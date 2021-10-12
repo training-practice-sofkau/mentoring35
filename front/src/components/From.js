@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import { fetchRandom } from '../actions';
 
-const From = (props) => {
+const From = (props) => {// component stateless
   const [state, setState] = useState();
   const onSubmit = (e) => {
     e.preventDefault();
@@ -24,11 +24,11 @@ const From = (props) => {
 }
 
 
-const stateMapToPors = state => {
+const stateMapToPros = state => {
   return {
     loading: state.view.loading
   }
 }
 
 
-export default connect(stateMapToPors)(From)
+export default connect(stateMapToPros)(From)
