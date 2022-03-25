@@ -1,6 +1,7 @@
 package co.com.sofka.mentoring35.cardshuffle.controller;
 
 import co.com.sofka.mentoring35.cardshuffle.collection.Card;
+import co.com.sofka.mentoring35.cardshuffle.model.CardDTO;
 import co.com.sofka.mentoring35.cardshuffle.model.PostRequestDTO;
 import co.com.sofka.mentoring35.cardshuffle.repository.CardRepository;
 import co.com.sofka.mentoring35.cardshuffle.service.CardService;
@@ -24,13 +25,13 @@ public class CardController {
     }
 
     @PostMapping("/card")
-    public ResponseEntity<Mono<Card>> generate(@RequestBody PostRequestDTO requestDTO){
-        return new ResponseEntity<Mono<Card>>(cardService.generate(requestDTO), HttpStatus.CREATED);
+    public ResponseEntity<Mono<CardDTO>> generate(@RequestBody PostRequestDTO requestDTO){
+        return new ResponseEntity<Mono<CardDTO>>(cardService.generate(requestDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/card")
-    public ResponseEntity<Flux<Card>> findAll(){
-        return new ResponseEntity<Flux<Card>>(cardService.get(), HttpStatus.OK);
+    public ResponseEntity<Flux<CardDTO>> findAll(){
+        return new ResponseEntity<Flux<CardDTO>>(cardService.get(), HttpStatus.OK);
     }
 
 }
