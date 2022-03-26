@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 const Result = (props) => {
   
   return <div>
-     {props.result && 'Resultado: '+ props.result} 
+     {props.result && 'Card generated: '+ props.result} 
   </div>
 }
 
 
 const stateMapToPros = state => {
   return {
-    result: state.random.result?.randomList
+    result: state.random.result?.card
   }
 }
 

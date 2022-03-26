@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value = "/api")
 public class CardController {
 
@@ -26,6 +26,7 @@ public class CardController {
 
     @PostMapping("/card")
     public ResponseEntity<Mono<CardDTO>> generate(@RequestBody PostRequestDTO requestDTO){
+
         return new ResponseEntity<Mono<CardDTO>>(cardService.generate(requestDTO), HttpStatus.CREATED);
     }
 

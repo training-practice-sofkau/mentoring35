@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import From from '../components/From'
+import CardFrom from '../components/CardFrom'
 import Result from '../components/Result'
 
 class App extends Component {// component stateful
   render() {
     return (
       <div>
-        <h3>Lista Random</h3>
-        <p>Sistema Ramdom - Demo</p>
-        <From />
+        <h3>Random Card Drawer</h3>
+        <p>Random system - Demo</p>
+        <CardFrom />
         <Result />
       </div>
     )

@@ -11,3 +11,9 @@ Qback/src/main/java/co/com/sofka/mentoring35/cardshuffle/model/PostRequestDTO.ja
 Lback/src/main/java/co/com/sofka/mentoring35/cardshuffle/collection/Card.java,d/0/d01e696943fcfac771d313c727ed1f0400d26508
 <
 back/pom.xml,e/a/ea3d82eba0d3ead41a6cf41b81f6ffc13f326c3e
+€
+Pback/src/main/java/co/com/sofka/mentoring35/cardshuffle/service/CardService.java,0/c/0c7c886a98fcf202168e399040d44d72f0e2fd64
+z
+Jback/src/main/java/co/com/sofka/mentoring35/cardshuffle/model/CardDTO.java,7/2/728d2386ba7b73a03054ba94587131e59eba22b9
+x
+Hback/src/main/java/co/com/sofka/mentoring35/cardshuffle/utils/Utils.java,7/c/7c2968965cec5639ba1a730e1fbb85e71619d889
